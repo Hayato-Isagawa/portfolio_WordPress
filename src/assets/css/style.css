@@ -568,9 +568,6 @@ textarea:focus {
   height: 50px;
   padding: 0 20px;
 }
-.header.is-open {
-  transform: translateY(-60px);
-}
 @media (min-width: 576px) and (max-width: 767px) {
   .header {
     height: 30px;
@@ -897,6 +894,7 @@ textarea:focus {
   left: 20px;
   font-family: "Bruno Ace", cursive;
   font-size: 2.8rem;
+  padding: 4px;
   overflow: hidden;
   -webkit-background-clip: text;
           background-clip: text;
@@ -990,6 +988,11 @@ textarea:focus {
 ------------------------------ */
 #concept {
   width: 100%;
+}
+
+.concept__container {
+  width: 100%;
+  margin: 0 auto;
   position: relative;
 }
 
@@ -1001,8 +1004,8 @@ textarea:focus {
   background-image: url(../img/index-jpg/concept-bg.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  top: 335px;
-  right: 20px;
+  top: 150px;
+  right: 0;
   z-index: -1;
   transform-origin: bottom right;
 }
@@ -1019,11 +1022,6 @@ textarea:focus {
     height: 49.4437577256vw;
     right: 10px;
   }
-}
-
-.concept__container {
-  width: 100%;
-  margin: 0 auto;
 }
 
 .concept__wrapper {
@@ -1352,16 +1350,13 @@ textarea:focus {
   overflow: hidden;
   margin-bottom: 32px;
 }
-
-.works__img {
+.works__figure img {
   width: 100%;
   height: 61.8%;
   max-height: 530px;
   transition: all 0.5s ease 0s;
   -o-object-fit: cover;
      object-fit: cover;
-  -o-object-position: bottom;
-     object-position: bottom;
 }
 
 .works__info {

@@ -6,24 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>haya. Portfolio</title>
-    <meta name="description" content="hayaのポートフォリオウェブサイトです">
-    <meta property="og:url" content="https://hayaportfolio202301.falconportfolio.site">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="haya. Portfolio">
-    <meta property="og:description" content="hayaのポートフォリオウェブサイトです">
-    <meta property="og:img" content="https://hayaportfolio202301.falconportfolio.site/assets/img/index-jpg/ogp.jpg">
-
-    <!-- Twitterカード -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@haya_1029384756" />
-    <meta name="twitter:creator" content="@haya_1029384756" />
-    <meta name="twitter:domain" content="hayaportfolio202301.falconportfolio.site" />
-    <meta name="twitter:title" content="haya. Portfolio" />
-    <meta name="twitter:description" content="hayaのポートフォリオウェブサイトです" />
-    <meta name="twitter:image"
-        content="https://hayaportfolio202301.falconportfolio.site/assets/img/index-jpg/ogp.jpg" />
-
     <!-- favicon & icon -->
     <link rel="apple-touch-icon" sizes="180x180" href="<?php echo get_template_directory_uri(); ?>/assets/favicon_package_v0.16/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo get_template_directory_uri(); ?>/assets/favicon_package_v0.16/favicon-32x32.png">
@@ -31,7 +13,7 @@
     <link rel="manifest" href="<?php echo get_template_directory_uri(); ?>/assets/favicon_package_v0.16/site.webmanifest">
     <link rel="mask-icon" href="<?php echo get_template_directory_uri(); ?>/assets/favicon_package_v0.16/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
+    <meta name="theme-color" content="#000a14">
 
     <!-- css -->
     <!-- google-font -->

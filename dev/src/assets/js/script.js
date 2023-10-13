@@ -241,6 +241,21 @@ jQuery(function ($) {
     },
   });
 
+  /* desc-swiper
+------------------------------ */
+  const descSwiper = new Swiper(".desc-swiper", {
+    autoplay: {
+      delay: 7500,
+    },
+    loop: true,
+    effect: "fade",
+
+    navigation: {
+      nextEl: ".swiper-button-next", // 「次へ」ボタン要素のクラス
+      prevEl: ".swiper-button-prev", // 「前へ」ボタン要素のクラス
+    },
+  });
+
   /* contact__form
 ------------------------------ */
   let required = document.querySelectorAll(".contact__required");
@@ -464,6 +479,7 @@ jQuery(function ($) {
     })
     .to(".concept__bg", {
       y: "50%",
+      x: "-10%",
       scale: 0.9,
     });
 

@@ -30,10 +30,9 @@
 <body>
     <div id="mouse-stalker"></div>
 
-    <!-- <div id="splash">
-        <div id="splash__text"></div>
-        <canvas id="space"></canvas>
-    </div> -->
+    <div id="splash">
+        <div id="splash__text">haya. Portfolio</div>
+    </div>
     <!-- /#splash -->
 
     <header class="header" id="header">

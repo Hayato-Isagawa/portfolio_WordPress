@@ -19,33 +19,27 @@
 
 /* splash ローディング時のアニメーション
 ============================== */
-// #splash {
-//     position: fixed;
-//     z-index: 998;
-//     width: 100%;
-//     height: 100%;
-//     text-align: center;
-//     background-color: global.$color-space;
-// }
+#splash {
+    position: fixed;
+    z-index: 998;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-color: transparent;
+    backdrop-filter: blur(30px);
+}
 
-// #space {
-//     width: 100%;
-//     height: 100%;
-//     z-index: 999;
-// }
+#splash__text {
+    position: absolute;
+    z-index: inherit;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    font-family: global.$font-en;
+    font-size: global.rem(32);
+}
 
-// #splash__text {
-//     position: absolute;
-//     z-index: inherit;
-//     top: 50%;
-//     left: 50%;
-//     width: 100%;
-//     transform: translate(-50%, -50%);
-// }
-
-// #splash__text svg {
-//     height: 2px;
-// }
 
 /* header
 ------------------------------ */
@@ -494,12 +488,12 @@
 ------------------------------ */
 #concept {
     width: 100%;
+    position: relative;
 }
 
 .concept__container {
     width: 100%;
     margin: 0 auto;
-    position: relative;
 }
 
 .concept__bg {
@@ -510,11 +504,11 @@
     background-image: url(../img/index-jpg/concept-bg.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    top: 150px;
-    right: 0;
+    top: 335px;
+    right: 100px;
     // transform: translateX(-50%);
     z-index: -1;
-    transform-origin: bottom right;
+    // transform-origin: bottom right;
 
     @include global.mq("small") {
         width: 80vw;
@@ -752,12 +746,18 @@
     margin-bottom: 16px;
     transition: all 0.2s ease 0s;
     overflow: hidden;
+    width: 100%;
+    height: 150px;
+    position: relative;
+    perspective: 50em;
 }
 
 .service__img {
+    position: absolute;
     width: 50%;
-    height: 50%;
-    object-fit: contain;
+    height: 100%;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .service__head {

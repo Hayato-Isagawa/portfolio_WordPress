@@ -218,6 +218,79 @@ jQuery(function ($) {
     });
   });
 
+  /* service__card-animation
+------------------------------ */
+  const wrap = document.querySelector(".js-move");
+
+  const items = document.querySelectorAll(".js-move-item");
+  const itemArray = Array.from(items);
+
+  const itemAcc = itemArray.map((item) => {
+    const acc = item.dataset.acc.split(",");
+    const accTsX = Number(acc[0]);
+    const accTsY = Number(acc[1]);
+    const accRtX = Number(acc[2]);
+    const accRtY = Number(acc[3]);
+    return { accTsX, accTsY, accRtX, accRtY };
+  });
+
+  let pointerX = 0;
+  let pointerY = 0;
+  let x = 0;
+  let y = 0;
+
+  const minmax = (num) => {
+    return Math.min(0.5, Math.max(-0.5, num));
+  };
+
+  const coordinate = () => {
+    const wrapReact = wrap.getBoundingClientRect();
+    x = (pointerX - wrapReact.left) / wrapReact.width - 0.5;
+    y = (pointerY - wrapReact.top) / wrapReact.height - 0.5;
+    x = minmax(x);
+    y = minmax(y);
+  };
+
+  wrap.addEventListener("mousemove", (e) => {
+    pointerX = e.clientX;
+    pointerY = e.clientY;
+    coordinate();
+  });
+
+  const styling = () => {
+    items.forEach((item, index) => {
+      const tsX = x * 30 * itemAcc[index].accTsX + "%";
+      const tsY = y * 30 * itemAcc[index].accTsY + "%";
+      const rtX = y * 30 * itemAcc[index].accRtX + "deg";
+      const rtY = x * 30 * itemAcc[index].accRtY + "deg";
+      item.style.transform =
+        "translateX(" +
+        tsX +
+        ") translateY(" +
+        tsY +
+        ") rotateX(" +
+        rtX +
+        ") rotateY(" +
+        rtY +
+        ")";
+    });
+  };
+
+  let tick;
+  wrap.addEventListener("mouseenter", (e) => {
+    tick = () => {
+      styling();
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  });
+
+  wrap.addEventListener("mouseleave", (e) => {
+    tick = () => {
+      cancelAnimationFrame(tick);
+    };
+  });
+
   /* works__swiper
 ------------------------------ */
   const worksSwiper = new Swiper(".works__swiper", {
@@ -501,6 +574,21 @@ jQuery(function ($) {
 });
 
 window.addEventListener("DOMContentLoaded", () => {
+  gsap.from("#splash__text", {
+    opacity: 0,
+    duration: 0.8,
+    ease: "power4.out",
+    delay: 1,
+  });
+
+  gsap.to("#splash", {
+    opacity: 0,
+    duration: 1,
+    ease: "power4.out",
+    display: "none",
+    delay: 2,
+  });
+
   gsap.utils.toArray(".header__logo, .top__ttl").forEach((el) => {
     const topRect = el.querySelector(".top__rect");
     const headerTopTl = gsap
@@ -509,7 +597,7 @@ window.addEventListener("DOMContentLoaded", () => {
         x: "105%",
         duration: 0.5,
         ease: "power4.out",
-        delay: 2,
+        delay: 4,
       })
       .set(".header__logo", {
         color: "#fff",

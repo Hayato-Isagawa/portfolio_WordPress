@@ -30,8 +30,8 @@
 			<!-- /#thisis -->
 
 			<section id="concept">
+				<div class="concept__bg"></div>
 				<div class="container concept__container">
-					<div class="concept__bg"></div>
 					<h2 class="section__ttl"><span class="section__rect"></span>Concept</h2>
 					<h3 class="section__sub-ttl">- コンセプト</h3>
 					<h4 class="section__text">
@@ -83,9 +83,9 @@
 							</p>
 						</a>
 					</div>
-					<div class="section__more">
+					<!-- <div class="section__more">
 						<a href="" type="button" class="more__button">お知らせ一覧を見る</a>
-					</div>
+					</div> -->
 				</div>
 			</section>
 
@@ -99,11 +99,11 @@
 									class="fa-solid fa-arrow-up-right-from-square"></i></a>ください。
 						</p>
 					</h4>
-					<ul class="service__list">
+					<ul class="service__list js-move">
 						<li class="service__contents">
 							<button class="service__link" type="button" aria-label="ウェブサイト制作について詳細を見る">
 								<div class="link__front">
-									<figure class="service__figure">
+									<figure class="service__figure js-move-item" data-acc="1, 1, 1, 1">
 										<img src="<?php echo get_template_directory_uri(); ?>/assets/img/index-jpg/service1.jpg" alt="" class="service__img">
 									</figure>
 									<h3 class="service__head">ウェブサイト制作</h3>
@@ -122,7 +122,7 @@
 						<li class="service__contents">
 							<button class="service__link" type="button" aria-label="コーディングについての詳細を見る">
 								<div class="link__front">
-									<figure class="service__figure">
+									<figure class="service__figure js-move-item" data-acc="-1, 1, 1, 1">
 										<img src="<?php echo get_template_directory_uri(); ?>/assets/img/index-jpg/service2.jpg" alt="" class="service__img">
 									</figure>
 									<h3 class="service__head">コーディング</h3>
@@ -142,7 +142,7 @@
 						<li class="service__contents">
 							<button class="service__link" type="button" aria-label="運用・保守代行について詳細を見る">
 								<div class="link__front">
-									<figure class="service__figure">
+									<figure class="service__figure js-move-item" data-acc="-1, -1, 1, 1">
 										<img src="<?php echo get_template_directory_uri(); ?>/assets/img/index-jpg/service3.jpg" alt="" class="service__img">
 									</figure>
 									<h3 class="service__head">運用・保守代行</h3>
@@ -162,7 +162,7 @@
 						<li class="service__contents">
 							<button class="service__link" type="button" aria-label="ウェブ全般について詳細を見る">
 								<div class="link__front">
-									<figure class="service__figure">
+									<figure class="service__figure js-move-item" data-acc="-1, -1, -1, 1">
 										<img src="<?php echo get_template_directory_uri(); ?>/assets/img/index-jpg/service4.jpg" alt="" class="service__img">
 									</figure>
 									<h3 class="service__head">ウェブ全般</h3>
@@ -182,7 +182,7 @@
 						<li class="service__contents">
 							<button class="service__link" type="button" aria-label="レスポンシブについて詳細を見る">
 								<div class="link__front">
-									<figure class="service__figure">
+									<figure class="service__figure js-move-item" data-acc="-1, -1, -1, -1">
 										<img src="<?php echo get_template_directory_uri(); ?>/assets/img/index-jpg/service5.jpg" alt="" class="service__img">
 									</figure>
 									<h3 class="service__head">レスポンシブ</h3>
@@ -202,7 +202,7 @@
 						<li class="service__contents">
 							<button class="service__link" type="button" aria-label="動画編集について詳細を見る">
 								<div class="link__front">
-									<figure class="service__figure">
+									<figure class="service__figure js-move-item" data-acc="1, -1, -1, -1">
 										<img src="<?php echo get_template_directory_uri(); ?>/assets/img/index-jpg/service6.jpg" jpg="" class="service__img">
 									</figure>
 									<h3 class="service__head">動画編集</h3>
@@ -289,9 +289,9 @@
 							<span class="works__icon3">&rightarrow;</span>
 						</div>
 					</div>
-					<div class="section__more">
+					<!-- <div class="section__more">
 						<a href="" type="button" class="more__button">実績一覧を見る</a>
-					</div>
+					</div> -->
 				</div>
 			</section>
 			<!-- /#works-->
@@ -398,9 +398,9 @@
 							</a>
 						</li>
 					</ul>
-					<div class="section__more">
+					<!-- <div class="section__more">
 						<a href="" type="button" class="more__button">ブログ一覧を見る</a>
-					</div>
+					</div> -->
 				</div>
 			</section>
 			<!-- /#service -->

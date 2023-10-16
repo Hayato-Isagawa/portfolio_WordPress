@@ -57,7 +57,7 @@
   <span class="works__icon2"></span>
   <span class="works__icon3">&rightarrow;</span>
 </div>
-<div class="works-desc__list">
+<div class="works-desc__contents">
   <dl class="works-desc__row">
     <dt class="works-desc__label">Name</dt>
     <dd class="works-desc__desc">

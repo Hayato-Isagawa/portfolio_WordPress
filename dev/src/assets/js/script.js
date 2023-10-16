@@ -222,74 +222,76 @@ jQuery(function ($) {
 ------------------------------ */
   const wrap = document.querySelector(".js-move");
 
-  const items = document.querySelectorAll(".js-move-item");
-  const itemArray = Array.from(items);
+  if (wrap) {
+    const items = document.querySelectorAll(".js-move-item");
+    const itemArray = Array.from(items);
 
-  const itemAcc = itemArray.map((item) => {
-    const acc = item.dataset.acc.split(",");
-    const accTsX = Number(acc[0]);
-    const accTsY = Number(acc[1]);
-    const accRtX = Number(acc[2]);
-    const accRtY = Number(acc[3]);
-    return { accTsX, accTsY, accRtX, accRtY };
-  });
-
-  let pointerX = 0;
-  let pointerY = 0;
-  let x = 0;
-  let y = 0;
-
-  const minmax = (num) => {
-    return Math.min(0.5, Math.max(-0.5, num));
-  };
-
-  const coordinate = () => {
-    const wrapReact = wrap.getBoundingClientRect();
-    x = (pointerX - wrapReact.left) / wrapReact.width - 0.5;
-    y = (pointerY - wrapReact.top) / wrapReact.height - 0.5;
-    x = minmax(x);
-    y = minmax(y);
-  };
-
-  wrap.addEventListener("mousemove", (e) => {
-    pointerX = e.clientX;
-    pointerY = e.clientY;
-    coordinate();
-  });
-
-  const styling = () => {
-    items.forEach((item, index) => {
-      const tsX = x * 30 * itemAcc[index].accTsX + "%";
-      const tsY = y * 30 * itemAcc[index].accTsY + "%";
-      const rtX = y * 30 * itemAcc[index].accRtX + "deg";
-      const rtY = x * 30 * itemAcc[index].accRtY + "deg";
-      item.style.transform =
-        "translateX(" +
-        tsX +
-        ") translateY(" +
-        tsY +
-        ") rotateX(" +
-        rtX +
-        ") rotateY(" +
-        rtY +
-        ")";
+    const itemAcc = itemArray.map((item) => {
+      const acc = item.dataset.acc.split(",");
+      const accTsX = Number(acc[0]);
+      const accTsY = Number(acc[1]);
+      const accRtX = Number(acc[2]);
+      const accRtY = Number(acc[3]);
+      return { accTsX, accTsY, accRtX, accRtY };
     });
-  };
 
-  let tick;
-  wrap.addEventListener("mouseenter", (e) => {
-    tick = () => {
-      styling();
+    let pointerX = 0;
+    let pointerY = 0;
+    let x = 0;
+    let y = 0;
+
+    const minmax = (num) => {
+      return Math.min(0.5, Math.max(-0.5, num));
+    };
+
+    const coordinate = () => {
+      const wrapReact = wrap.getBoundingClientRect();
+      x = (pointerX - wrapReact.left) / wrapReact.width - 0.5;
+      y = (pointerY - wrapReact.top) / wrapReact.height - 0.5;
+      x = minmax(x);
+      y = minmax(y);
+    };
+
+    wrap.addEventListener("mousemove", (e) => {
+      pointerX = e.clientX;
+      pointerY = e.clientY;
+      coordinate();
+    });
+
+    const styling = () => {
+      items.forEach((item, index) => {
+        const tsX = x * 30 * itemAcc[index].accTsX + "%";
+        const tsY = y * 30 * itemAcc[index].accTsY + "%";
+        const rtX = y * 30 * itemAcc[index].accRtX + "deg";
+        const rtY = x * 30 * itemAcc[index].accRtY + "deg";
+        item.style.transform =
+          "translateX(" +
+          tsX +
+          ") translateY(" +
+          tsY +
+          ") rotateX(" +
+          rtX +
+          ") rotateY(" +
+          rtY +
+          ")";
+      });
+    };
+
+    let tick;
+    wrap.addEventListener("mouseenter", (e) => {
+      tick = () => {
+        styling();
+        requestAnimationFrame(tick);
+      };
       requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
-  });
+    });
 
-  wrap.addEventListener("mouseleave", (e) => {
-    tick = () => {
-      cancelAnimationFrame(tick);
-    };
-  });
+    wrap.addEventListener("mouseleave", (e) => {
+      tick = () => {
+        cancelAnimationFrame(tick);
+      };
+    });
+  }
 
   /* works__swiper
 ------------------------------ */
@@ -449,31 +451,31 @@ jQuery(function ($) {
     }
   });
 
-  // let $form = $("#js-form");
-  // let success = $("#js-success");
-  // let error = $("#js-error");
+  let $form = $("#js-form");
+  let success = $("#js-success");
+  let error = $("#js-error");
 
-  // $form.on("submit", function () {
-  //   $.ajax({
-  //     url: $form.attr("action"),
-  //     data: $form.serialize(),
-  //     type: "POST",
-  //     dataType: "xml",
-  //     statusCode: {
-  //       0: function () {
-  //         //送信に成功したときの処理
-  //         $form.fadeOut(500);
-  //         success.fadeIn(2000);
-  //       },
-  //       200: function () {
-  //         //送信に失敗したときの処理
-  //         $form.fadeOut(500);
-  //         error.fadeIn(2000);
-  //       },
-  //     },
-  //   });
-  //   return false;
-  // });
+  $form.on("submit", function () {
+    $.ajax({
+      url: $form.attr("action"),
+      data: $form.serialize(),
+      type: "POST",
+      dataType: "xml",
+      statusCode: {
+        0: function () {
+          //送信に成功したときの処理
+          $form.fadeOut(500);
+          success.fadeIn(2000);
+        },
+        200: function () {
+          //送信に失敗したときの処理
+          $form.fadeOut(500);
+          error.fadeIn(2000);
+        },
+      },
+    });
+    return false;
+  });
 
   /* gsapでのアニメーション
 ------------------------------ */
@@ -516,7 +518,7 @@ jQuery(function ($) {
     const sectionTtlTl = gsap
       .timeline({
         scrollTrigger: {
-          trigger: sections[index + 1],
+          trigger: el,
           start: "top bottom",
           end: "center center",
           scrub: true,

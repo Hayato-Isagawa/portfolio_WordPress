@@ -1,0 +1,315 @@
+@use '../global' as global;
+@use '../foundation';
+
+// ブログ、お知らせ記事
+
+.l-article-pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.news-article {
+  width: 670px;
+  max-width: 100%;
+}
+
+.news-article__ttl {
+  font-size: global.rem(28);
+  line-height: calc(40 / 28);
+  letter-spacing: 2.24px;
+  font-weight: 700;
+  margin-bottom: 18px;
+
+  @include global.mq("ex-small") {
+    font-size: global.rem(20);
+    line-height: calc(32 / 20);
+    letter-spacing: 1.6px;
+    margin-bottom: 16px;
+  }
+}
+
+.news-article__meta {
+  display: flex;
+  align-items: center;
+  gap: global.rem(32);
+  margin-bottom: 55px;
+}
+
+.news-article__date {
+  position: relative;
+  line-height: calc(23 / 16);
+}
+
+.news-article__tag {
+  padding-top: 5px;
+  padding-right: 12px;
+  padding-bottom: 5px;
+  padding-left: 12px;
+
+  @include global.mq("ex-small") {
+    font-size: global.rem(11);
+    margin: 0;
+    padding-top: global.rem(5);
+    padding-right: global.rem(12);
+    padding-bottom: global.rem(5);
+    padding-left: global.rem(12);
+  }
+}
+
+.news-article__body {
+  font-size: global.rem(14);
+  line-height: calc(24 / 14);
+  margin-bottom: 93px;
+
+  @include global.mq("ex-small") {
+    margin-bottom: 38px;
+  }
+
+  p+p {
+    margin-top: 23px;
+  }
+
+  a {
+    display: inline-block;
+    font-size: global.rem(14);
+    border-bottom: 1px solid global.$color-accent1;
+    border-image: linear-gradient(163deg, rgba(219, 87, 205, 1), rgba(47, 237, 167, 1));
+    border-image-slice: 1;
+    position: relative;
+
+    &::after {
+      position: absolute;
+      content: '';
+      border-bottom: 1px solid transparent;
+      width: 0;
+      bottom: -1px;
+      left: 0;
+    }
+
+    &:hover {
+      border-bottom: 1px solid transparent;
+      border-image: none;
+      border-image-slice: 0;
+
+      &::after {
+        border-bottom: 1px solid global.$color-accent1;
+        border-image: linear-gradient(163deg, rgba(219, 87, 205, 1), rgba(47, 237, 167, 1));
+        border-image-slice: 1;
+        animation: borderAnime .5s ease 0s forwards;
+      }
+    }
+  }
+
+  ul {
+    margin-top: 13px;
+    margin-bottom: 13px;
+  }
+
+  img {
+    margin-bottom: 40px;
+  }
+
+  li {
+    font-size: global.rem(16);
+    line-height: calc(30 / 16);
+    padding-left: 28px;
+    position: relative;
+
+    &:not(:last-child) {
+      margin-bottom: 4px;
+
+      @include global.mq("ex-small") {
+        margin-bottom: 3px;
+      }
+    }
+
+    @include global.mq("ex-small") {
+      padding-left: 30px;
+    }
+
+    &::before {
+      position: absolute;
+      content: '\30FB'; // '・' が '\30FB' に置き換えられています
+      font-size: global.rem(30);
+      top: 50%;
+      transform: translateY(-50%);
+      left: 3px;
+
+      @include global.mq("ex-small") {
+        font-size: global.rem(16);
+        left: 14px;
+      }
+    }
+  }
+
+  h2 {
+    margin-top: 58px;
+    margin-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 28px;
+    font-size: 24px;
+    line-height: calc(32 / 24);
+    letter-spacing: 1.92px;
+    color: global.$color-background;
+    position: relative;
+
+    &::before {
+      position: absolute;
+      content: '';
+      width: 8px;
+      height: 100%;
+      min-height: 52px;
+      background-image: linear-gradient(163deg, rgba(219, 87, 205, 1), rgba(47, 237, 167, 1));
+      top: 50%;
+      transform: translateY(-50%);
+      left: 0;
+
+      @include global.mq("ex-small") {
+        min-height: 40px;
+        width: 6px;
+      }
+    }
+
+    @include global.mq("ex-small") {
+      font-size: global.rem(18);
+      line-height: calc(32 / 18);
+      letter-spacing: 1.44px;
+      padding-top: 4px;
+      padding-right: 0px;
+      padding-bottom: 4px;
+      padding-left: 22px;
+      margin-top: 58px;
+    }
+  }
+
+  h3 {
+    margin-top: 37px;
+    margin-bottom: 14px;
+    font-size: global.rem(20);
+    line-height: calc(32 / 20);
+    letter-spacing: 1.6px;
+    color: global.$color-background;
+    padding-bottom: 3px;
+    border-bottom: 1px solid global.$color-accent1;
+    border-image: linear-gradient(163deg, rgba(219, 87, 205, 1), rgba(47, 237, 167, 1));
+    border-image-slice: 1;
+
+    @include global.mq("ex-small") {
+      font-size: global.rem(16);
+      line-height: calc(32 / 16);
+      letter-spacing: 1.28px;
+      padding-bottom: 0;
+      margin-top: 33px;
+      margin-bottom: 16px;
+    }
+  }
+
+  h4 {
+    margin-top: 52px;
+    margin-bottom: 9px;
+    font-size: global.rem(16);
+    line-height: calc(32 / 16);
+    letter-spacing: 1.28px;
+    color: global.$color-background;
+
+    @include global.mq("ex-small") {
+      font-size: global.rem(14);
+      line-height: calc(32 / 14);
+      letter-spacing: 1.12px;
+      margin-top: 51px;
+      margin-bottom: 8px;
+    }
+  }
+}
+
+.news-article__pagination-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.news-article__pagination {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 93px;
+
+  @include global.mq("ex-small") {
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-bottom: 38px;
+  }
+}
+
+.post-page-numbers {
+  padding: 5px 15px;
+  color: global.$color-background;
+  border: 1px solid global.$color-background;
+  font-size: global.rem(14);
+  transition: all .3s ease 0s;
+
+  &:hover {
+    color: global.$color-main;
+    background-color: global.$color-background;
+  }
+
+  @include global.mq("ex-small") {
+    font-size: global.rem(12);
+    padding-top: 4px;
+    padding-bottom: 4px;
+    width: 30px;
+  }
+}
+
+.post-page-numbers.current {
+  pointer-events: none;
+  background-color: global.$color-background;
+  color: global.$color-main;
+}
+
+.news-article__link {
+  justify-content: center;
+}
+
+.news-article__paginate-post-link {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  gap: 20px;
+
+  @include global.mq("ex-small") {
+    gap: 12px;
+  }
+}
+
+.news-article__prev,
+.news-article__list,
+.news-article__next {
+  color: global.$color-main;
+  border: 1px solid global.$color-background;
+  font-size: global.rem(14);
+  color: global.$color-background;
+  position: relative;
+  line-height: calc(26 / 14);
+  transition: all .3s ease 0s;
+  padding: 5px 15px;
+
+  &:hover {
+    color: global.$color-main;
+    background-color: global.$color-background;
+  }
+}
+
+.news-article__prev {}
+
+.news-article__list {
+  background-color: global.$color-background;
+  color: global.$color-main;
+
+  &:hover {
+    opacity: .7;
+  }
+}
+
+.news-article__next {}

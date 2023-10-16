@@ -23,5 +23,3 @@
   add_action("wp_enqueue_scripts", "my_script_init");
 
   
-
-

@@ -1,35 +1,5 @@
-@use './global' as global;
-@use 'base';
-
-/* splash ローディング時のアニメーション
-============================== */
-// #splash {
-//   position: fixed;
-//   z-index: 998;
-//   width: 100%;
-//   height: 100%;
-//   text-align: center;
-//   background-color: rgba(0, 10, 20, 1);
-// }
-
-// #space {
-//   width: 100%;
-//   height: 100%;
-//   z-index: 999;
-// }
-
-// #splash__text {
-//   position: absolute;
-//   z-index: inherit;
-//   top: 50%;
-//   left: 50%;
-//   width: 100%;
-//   transform: translate(-50%, -50%);
-// }
-
-// #splash__text svg {
-//   height: 2px;
-// }
+@use '../global' as global;
+@use '../foundation';
 
 /* works-description
 ------------------------------ */
@@ -51,8 +21,6 @@
     margin: 0 auto;
   }
 }
-
-.works-desc__list {}
 
 .works-desc__row {
   display: flex;
@@ -123,7 +91,9 @@
 
   &--link {
     position: relative;
-    border-bottom: 1px solid global.$color-main;
+    border-bottom: 1px solid global.$color-accent1;
+    border-image: linear-gradient(163deg, rgba(219, 87, 205, 1), rgba(47, 237, 167, 1));
+    border-image-slice: 1;
     display: inline-block;
 
     &::after {
@@ -137,6 +107,8 @@
 
     &:hover {
       border-bottom: 1px solid transparent;
+      border-image: none;
+      border-image-slice: 0;
 
       &::after {
         border-bottom: 1px solid global.$color-accent1;

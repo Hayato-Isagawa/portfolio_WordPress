@@ -239,23 +239,25 @@
 					<div class="works__swiper">
 						<ul class="swiper-wrapper">
 							<?php
-							if (have_posts()):
-								while (have_posts()):
-									the_post();
-							?>
+							$args = array(
+									'post_type' => 'post', // 投稿タイプを指定
+									'posts_per_page' => -1, // 表示する投稿の数（-1はすべての投稿を表示）
+							);
+
+							$query = new WP_Query($args);
+
+							if ($query->have_posts()):
+									while ($query->have_posts()):
+											$query->the_post();
+														?>
 							<li class="swiper-slide">
-								<a href="<?php the_permalink(); ?>" class="works__link" aria-label="結婚式招待状の詳細を見る">
+								<a href="<?php the_permalink(); ?>" class="works__link" aria-label="<?php the_title(); ?>を見る">
 									<figure class="works__figure">
-											<?php if (has_post_thumbnail()): ?>
-												<?php if(isset($args)) {
-													the_post_thumbnail($args);
-												} else {
-													the_post_thumbnail();
-												}
-												?>
-											<?php else: ?>
-												<img src="<?php echo get_template_directory_uri(); ?>/assets/img/noimg.png" alt="アイキャッチ画像がありません">
-											<?php endif; ?>
+									<?php if (has_post_thumbnail()): ?>
+											<?php the_post_thumbnail(); ?>
+									<?php else: ?>
+											<img src="<?php echo get_template_directory_uri(); ?>/assets/img/noimg.png" alt="アイキャッチ画像がありません">
+									<?php endif; ?>
 									</figure>
 									<div class="works__info">
 										<h3 class="works__ttl"><?php the_title(); ?><br class="is-sp"><?php the_content(); ?></h3>
@@ -274,6 +276,7 @@
 						<?php
 							endwhile;
 						endif;
+						wp_reset_postdata();
 						?>
 						</ul>
 					</div>
@@ -289,9 +292,9 @@
 							<span class="works__icon3">&rightarrow;</span>
 						</div>
 					</div>
-					<!-- <div class="section__more">
-						<a href="" type="button" class="more__button">実績一覧を見る</a>
-					</div> -->
+					<div class="section__more">
+							<a href="<?php echo esc_url(get_permalink(get_option('page_for_posts'))); ?>" type="button" class="more__button">実績一覧を見る</a>
+					</div>
 				</div>
 			</section>
 			<!-- /#works-->
@@ -403,7 +406,7 @@
 					</div> -->
 				</div>
 			</section>
-			<!-- /#service -->
+			<!-- /#blog -->
 
 			<section id="contact">
 				<div class="contact__ttls js-bg">

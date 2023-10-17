@@ -64,28 +64,32 @@
 						</p>
 					</h4>
 					<div class="news__area">
-						<a href="#" class="news__link">
-							<time class="news__date" datetime="">2023.10.01</time>
+						<?php
+						$latest_news = new WP_Query(
+							array (
+								'post_type' 		 => 'news',
+								'posts_per_page' => 3,
+							)
+							);
+						if ($latest_news->have_posts()):
+							while($latest_news->have_posts()):
+								$latest_news->the_post();
+						?>
+						<a href="<?php the_permalink(); ?>" class="news__link">
+							<time class="news__date" datetime="<?php echo get_the_date("Y.m.d") ?>"><?php echo get_the_date("Y.m.d") ?></time>
 							<p class="news__ttl">
-								タイトルが入ります。タイトルが入ります。タイトルが入ります。タイトルが入ります。タイトルが入ります。
+								<?php echo the_title(); ?>
 							</p>
 						</a>
-						<a href="#" class="news__link">
-							<time class="news__date" datetime="">2023.10.01</time>
-							<p class="news__ttl">
-								タイトルが入ります。
-							</p>
-						</a>
-						<a href="#" class="news__link">
-							<time class="news__date" datetime="">2023.10.01</time>
-							<p class="news__ttl">
-								タイトルが入ります。
-							</p>
-						</a>
+						<?php
+							endwhile;
+						endif;
+						wp_reset_postdata();
+						?>
 					</div>
-					<!-- <div class="section__more">
-						<a href="" type="button" class="more__button">お知らせ一覧を見る</a>
-					</div> -->
+					<div class="section__more">
+						<a href="<?php echo esc_url(home_url('news')) ?>" type="button" class="more__button">お知らせ一覧を見る</a>
+					</div>
 				</div>
 			</section>
 
@@ -239,16 +243,15 @@
 					<div class="works__swiper">
 						<ul class="swiper-wrapper">
 							<?php
-							$args = array(
-									'post_type' => 'post', // 投稿タイプを指定
-									'posts_per_page' => -1, // 表示する投稿の数（-1はすべての投稿を表示）
+							$works_post = new WP_Query(
+								array(
+									'post_type' 		 => 'post',
+									'posts_per_page' => -1,
+								)
 							);
-
-							$query = new WP_Query($args);
-
-							if ($query->have_posts()):
-									while ($query->have_posts()):
-											$query->the_post();
+							if ($works_post->have_posts()):
+									while ($works_post->have_posts()):
+											$works_post->the_post();
 														?>
 							<li class="swiper-slide">
 								<a href="<?php the_permalink(); ?>" class="works__link" aria-label="<?php the_title(); ?>を見る">
@@ -310,106 +313,59 @@
 						</p>
 					</h4>
 					<ul class="blog__list">
+					<?php
+					$blog_post = new WP_Query(
+						array(
+							'post_type'      => 'blog',
+							'posts_per_page' => 6
+						)
+						);
+					if ($blog_post->have_posts()):
+						while($blog_post->have_posts()):
+							$blog_post->the_post();
+					?>
 						<li class="blog__contents">
-							<a class="blog__link" aria-label="">
+							<a href="<?php echo the_permalink()?>" class="blog__link" aria-label="">
 								<figure class="blog__figure">
-									<img src="<?php echo get_template_directory_uri(); ?>/assets/img/index-jpg/dummy.webp" alt="" class="blog__img">
+								<?php if (has_post_thumbnail()): ?>
+									<?php the_post_thumbnail(); ?>
+								<?php else: ?>
+									<img src="<?php echo get_template_directory_uri(); ?>/assets/img/noimg.png" alt="アイキャッチ画像がありません">
+								<?php endif; ?>
 								</figure>
 								<div class="blog__info">
-									<time class="blog__date" datetime="">2023.10.01</time>
-									<h3 class="blog__ttl">ブログのタイトルが入ります。</h3>
+									<time class="blog__date" datetime="<?php echo get_the_date('Y.m.d'); ?>"><?php echo get_the_date('Y.m.d'); ?></time>
+									<h3 class="blog__ttl"><?php echo the_title() ?></h3>
 									<div class="blog__tags">
-										<p class="works__tag blog__tag">HTML</p>
-										<p class="works__tag blog__tag">CSS</p>
+									<?php
+										$blog_categories = get_the_terms(get_the_ID(), 'blog_cat');
+											if($blog_categories):
+												foreach ($blog_categories as $blog_category):
+										?>
+										<p class="works__tag blog__tag"><?php echo esc_html($blog_category->name); ?></p>
+										<?php
+											endforeach;
+										endif;
+										?>
 									</div>
 								</div>
 							</a>
 						</li>
-						<li class="blog__contents">
-							<a class="blog__link" aria-label="">
-								<figure class="blog__figure">
-									<img src="<?php echo get_template_directory_uri(); ?>/assets/img/index-jpg/dummy.webp" alt="" class="blog__img">
-								</figure>
-								<div class="blog__info">
-									<time class="blog__date" datetime="">2023.10.01</time>
-									<h3 class="blog__ttl">ブログのタイトルが入ります。</h3>
-									<div class="blog__tags">
-										<p class="works__tag blog__tag">HTML</p>
-										<p class="works__tag blog__tag">CSS</p>
-									</div>
-								</div>
-							</a>
-						</li>
-						<li class="blog__contents">
-							<a class="blog__link" aria-label="">
-								<figure class="blog__figure">
-									<img src="<?php echo get_template_directory_uri(); ?>/assets/img/index-jpg/dummy.webp" alt="" class="blog__img">
-								</figure>
-								<div class="blog__info">
-									<time class="blog__date" datetime="">2023.10.01</time>
-									<h3 class="blog__ttl">ブログのタイトルが入ります。</h3>
-									<div class="blog__tags">
-										<p class="works__tag blog__tag">HTML</p>
-										<p class="works__tag blog__tag">CSS</p>
-									</div>
-								</div>
-							</a>
-						</li>
-						<li class="blog__contents">
-							<a class="blog__link" aria-label="">
-								<figure class="blog__figure">
-									<img src="<?php echo get_template_directory_uri(); ?>/assets/img/index-jpg/dummy.webp" alt="" class="blog__img">
-								</figure>
-								<div class="blog__info">
-									<time class="blog__date" datetime="">2023.10.01</time>
-									<h3 class="blog__ttl">ブログのタイトルが入ります。</h3>
-									<div class="blog__tags">
-										<p class="works__tag blog__tag">HTML</p>
-										<p class="works__tag blog__tag">CSS</p>
-									</div>
-								</div>
-							</a>
-						</li>
-						<li class="blog__contents">
-							<a class="blog__link" aria-label="">
-								<figure class="blog__figure">
-									<img src="<?php echo get_template_directory_uri(); ?>/assets/img/index-jpg/dummy.webp" alt="" class="blog__img">
-								</figure>
-								<div class="blog__info">
-									<time class="blog__date" datetime="">2023.10.01</time>
-									<h3 class="blog__ttl">ブログのタイトルが入ります。</h3>
-									<div class="blog__tags">
-										<p class="works__tag blog__tag">HTML</p>
-										<p class="works__tag blog__tag">CSS</p>
-									</div>
-								</div>
-							</a>
-						</li>
-						<li class="blog__contents">
-							<a class="blog__link" aria-label="">
-								<figure class="blog__figure">
-									<img src="<?php echo get_template_directory_uri(); ?>/assets/img/index-jpg/dummy.webp" jpg="" class="blog__img">
-								</figure>
-								<div class="blog__info">
-									<time class="blog__date" datetime="">2023.10.01</time>
-									<h3 class="blog__ttl">ブログのタイトルが入ります。</h3>
-									<div class="blog__tags">
-										<p class="works__tag blog__tag">HTML</p>
-										<p class="works__tag blog__tag">CSS</p>
-									</div>
-								</div>
-							</a>
-						</li>
+					<?php
+						endwhile;
+					endif;
+					wp_reset_postdata();
+					?>
 					</ul>
-					<!-- <div class="section__more">
-						<a href="" type="button" class="more__button">ブログ一覧を見る</a>
-					</div> -->
+					<div class="section__more">
+						<a href="<?php echo esc_url(home_url('blog')) ?>" type="button" class="more__button">ブログ一覧を見る</a>
+					</div>
 				</div>
 			</section>
 			<!-- /#blog -->
 
 			<section id="contact">
-				<div class="contact__ttls js-bg">
+				<div class="contact__ttl-wrapper js-bg">
 					<h2 class="section__ttl">Contact</h2>
 					<h3 class="section__sub-ttl">- お問い合わせ</h3>
 				</div>

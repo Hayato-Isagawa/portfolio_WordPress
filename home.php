@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
-			<section id="blog">
-				<div class="container blog__container">
+			<section id="works-desc">
+				<div class="container works-desc__container">
 					<h2 class="section__ttl">Works</h2>
 					<h3 class="section__sub-ttl">- 実績一覧</h3>
 					<ul class="works-desc__list">

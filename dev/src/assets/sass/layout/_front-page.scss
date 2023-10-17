@@ -587,9 +587,10 @@
 /* news
 ------------------------------ */
 .news__area {
-  border: 1px solid global.$color-background;
+  border: 1px solid rgba(global.$color-background, .1);
+  // background-color: rgba(global.$color-background, .1);
   padding: 20px;
-  box-shadow: 0 0 20px global.$color-main;
+  box-shadow: 0 0 10px global.$color-main;
 }
 
 .news__link {
@@ -635,7 +636,13 @@
   flex: 0 0 125px;
 }
 
-.news__ttl {}
+.news__ttl {
+  width: 100%;
+  max-width: 833px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
 
 /* service
 ------------------------------ */
@@ -894,7 +901,7 @@
     font-size: global.rem(10);
 
     &+& {
-      margin-left: 8px;
+      margin-left: 0;
     }
   }
 
@@ -902,7 +909,7 @@
     font-size: global.rem(10);
 
     &+& {
-      margin-left: 8px;
+      margin-left: 0;
     }
   }
 }
@@ -1164,7 +1171,7 @@
   }
 }
 
-.contact__ttls {
+.contact__ttl-wrapper {
   background-image: url(../img/index-jpg/contact-bg.jpg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -1188,6 +1195,10 @@
     width: 100%;
     margin: 0 auto;
 
+    @include global.mq("medium") {
+      margin-left: 10px;
+    }
+
     @include global.mq("small") {
       margin-left: 10px;
     }
@@ -1196,7 +1207,6 @@
       margin-left: 10px;
     }
   }
-
 }
 
 .contact__form {

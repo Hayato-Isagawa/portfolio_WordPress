@@ -576,20 +576,28 @@ jQuery(function ($) {
 });
 
 window.addEventListener("DOMContentLoaded", () => {
-  gsap.from("#splash__text", {
-    opacity: 0,
-    duration: 0.8,
-    ease: "power4.out",
-    delay: 1,
-  });
-
-  gsap.to("#splash", {
-    opacity: 0,
-    duration: 1,
-    ease: "power4.out",
-    display: "none",
-    delay: 2,
-  });
+  if ("#splash__text") {
+    gsap.from("#splash__text", {
+      opacity: 0,
+      duration: 0.8,
+      ease: "power4.out",
+      delay: 1,
+    });
+    gsap.to("#splash", {
+      opacity: 0,
+      duration: 1,
+      ease: "power4.out",
+      display: "none",
+      delay: 2,
+    });
+  } else {
+    gsap.to("#splash", {
+      opacity: 0,
+      duration: 1,
+      ease: "power4.out",
+      display: "none",
+    });
+  }
 
   gsap.utils.toArray(".header__logo, .top__ttl").forEach((el) => {
     const topRect = el.querySelector(".top__rect");

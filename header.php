@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" id="html">
 
 <head>
     <meta charset="UTF-8">
@@ -31,7 +31,9 @@
     <div id="mouse-stalker"></div>
 
     <div id="splash">
+        <?php if (is_front_page()): ?>
         <div id="splash__text">haya. Portfolio</div>
+        <?php endif; ?>
     </div>
     <!-- /#splash -->
 

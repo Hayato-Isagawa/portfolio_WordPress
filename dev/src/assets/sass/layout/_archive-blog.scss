@@ -1,0 +1,93 @@
+@use '../global' as global;
+@use '../foundation';
+
+#archive-blog {
+  padding-left: 0;
+  padding-right: 0;
+  overflow-x: hidden;
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 100px;
+
+  @include global.mq("small") {
+    padding-top: 30px;
+    padding-bottom: 50px;
+  }
+
+  @include global.mq("ex-small") {
+    padding-top: 30px;
+    padding-bottom: 50px;
+  }
+}
+
+.archive-blog__ttl-wrapper {
+  background-image: url(../img/index-jpg/single-archive-bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 32px;
+
+  @include global.mq("small") {
+    height: 200px;
+  }
+
+  @include global.mq("ex-small") {
+    height: 200px;
+  }
+
+  .section__ttl,
+  .section__sub-ttl {
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+
+    @include global.mq("medium") {
+      margin-left: 10px;
+    }
+
+    @include global.mq("small") {
+      margin-left: 10px;
+    }
+
+    @include global.mq("ex-small") {
+      margin-left: 10px;
+    }
+  }
+}
+
+.archive-blog__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 2px;
+
+  @include global.mq("small") {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 10px;
+  }
+
+  @include global.mq("ex-small") {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+  }
+}
+
+.archive-blog__contents {
+  box-shadow: 0 0 10px global.$color-main;
+}
+
+.archive-blog__info {
+  padding: 8px;
+}
+
+.archive-blog__date {
+  font-size: global.rem(12);
+}
+
+.archive-blog__ttl {
+  margin-bottom: 8px;
+}

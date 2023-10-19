@@ -45,9 +45,3 @@
 .works-desc__ttl {
   margin-bottom: 8px;
 }
-
-.works-desc__tag {
-  & + & {
-    margin-left: 0;
-  }
-}

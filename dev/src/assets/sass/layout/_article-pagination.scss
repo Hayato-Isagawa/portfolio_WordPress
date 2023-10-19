@@ -1,0 +1,99 @@
+@use '../global' as global;
+@use '../foundation';
+
+.article__pagination-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.article__pagination {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 32px;
+
+  @include global.mq("ex-small") {
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-bottom: 38px;
+  }
+}
+
+.post-page-numbers {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  color: global.$color-background;
+  border: 1px solid global.$color-background;
+  font-size: global.rem(14);
+  transition: all .3s ease 0s;
+
+  &:hover {
+    color: global.$color-main;
+    background-color: global.$color-background;
+  }
+
+  @include global.mq("ex-small") {
+    font-size: global.rem(12);
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+.post-page-numbers.current {
+  pointer-events: none;
+  background-color: global.$color-background;
+  color: global.$color-main;
+}
+
+.article__link {
+  justify-content: center;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 48px;
+
+  @include global.mq("ex-small") {
+    gap: 12px;
+  }
+}
+
+.article__prev,
+.article__list,
+.article__next {
+  color: global.$color-main;
+  border: 1px solid global.$color-background;
+  font-size: global.rem(14);
+  color: global.$color-background;
+  position: relative;
+  line-height: calc(26 / 14);
+  transition: all .3s ease 0s;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.article__prev,
+.article__next {
+  &:hover {
+    color: global.$color-main;
+    background-color: global.$color-background;
+  }
+}
+
+.article__list {
+  background-color: global.$color-background;
+  border: none;
+  color: global.$color-main;
+  display: inline-block;
+  padding: 10px 20px;
+  color: #fff;
+  border-radius: 50px;
+  background-image: linear-gradient(163deg, rgba(219, 87, 205, 1), rgba(47, 237, 167, 1));
+}

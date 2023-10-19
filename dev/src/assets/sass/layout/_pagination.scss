@@ -1,0 +1,68 @@
+@use '../global' as global;
+@use '../foundation';
+
+.pagination-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.pagination {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  gap: 10px;
+
+  @include global.mq("ex-small") {
+    flex-wrap: wrap;
+    gap: 7px;
+  }
+}
+
+.page-numbers {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  color: global.$color-background;
+  border: 1px solid global.$color-background;
+  font-size: global.rem(14);
+  transition: all .3s ease 0s;
+
+  &:hover {
+    color: global.$color-main;
+    background-color: global.$color-background;
+  }
+
+  @include global.mq("ex-small") {
+    font-size: global.rem(12);
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+.page-numbers.prev,
+.page-numbers.next {
+  color: global.$color-background;
+  position: relative;
+  width: auto;
+  padding-right: 16px;
+  padding-left: 16px;
+
+  @include global.mq("ex-small") {
+    font-size: global.rem(11);
+  }
+
+  &:hover {
+    color: global.$color-main;
+    background-color: global.$color-background;
+  }
+}
+
+.page-numbers.current {
+  pointer-events: none;
+  background-color: global.$color-background;
+  color: global.$color-main;
+}

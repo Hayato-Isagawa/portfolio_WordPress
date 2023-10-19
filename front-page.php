@@ -60,7 +60,7 @@
 					<h3 class="section__sub-ttl">- お知らせ</h3>
 					<h4 class="section__text news__text">
 						<p class="section__desc">
-							ただいま準備中です。
+							ポートフォリオサイトの更新等のお知らせです。
 						</p>
 					</h4>
 					<div class="news__area">
@@ -75,7 +75,7 @@
 							while($latest_news->have_posts()):
 								$latest_news->the_post();
 						?>
-						<a href="<?php the_permalink(); ?>" class="news__link">
+						<a href="<?php the_permalink(); ?>" class="news__link link__hover">
 							<time class="news__date" datetime="<?php echo get_the_date("Y.m.d") ?>"><?php echo get_the_date("Y.m.d") ?></time>
 							<p class="news__ttl">
 								<?php echo the_title(); ?>
@@ -88,7 +88,7 @@
 						?>
 					</div>
 					<div class="section__more">
-						<a href="<?php echo esc_url(home_url('news')) ?>" type="button" class="more__button">お知らせ一覧を見る</a>
+						<a href="<?php echo esc_url(home_url('news')) ?>" type="button" class="more__button">お知らせ一覧ページを見る</a>
 					</div>
 				</div>
 			</section>
@@ -99,7 +99,7 @@
 					<h3 class="section__sub-ttl">- サービス</h3>
 					<h4 class="section__text">
 						<p class="section__desc">
-							サービス内容について詳しく知りたい方は、お気軽に<a href="#contact" class="service__contact">お問い合わせ <i
+							サービス内容について詳しく知りたい方は、お気軽に<a href="#contact" class="link__hover">お問い合わせ <i
 									class="fa-solid fa-arrow-up-right-from-square"></i></a>ください。
 						</p>
 					</h4>
@@ -256,23 +256,11 @@
 							<li class="swiper-slide">
 								<a href="<?php the_permalink(); ?>" class="works__link" aria-label="<?php the_title(); ?>を見る">
 									<figure class="works__figure">
-									<?php if (has_post_thumbnail()): ?>
-											<?php the_post_thumbnail(); ?>
-									<?php else: ?>
-											<img src="<?php echo get_template_directory_uri(); ?>/assets/img/noimg.png" alt="アイキャッチ画像がありません">
-									<?php endif; ?>
+              			<?php get_template_part('/template-parts/thumbnail'); ?>
 									</figure>
 									<div class="works__info">
 										<h3 class="works__ttl"><?php the_title(); ?><br class="is-sp"><?php the_content(); ?></h3>
-										<?php
-										$works_categories = get_the_terms(get_the_ID(), 'category');
-											if($works_categories):
-												foreach ($works_categories as $works_category):
-										?>
-											<p class="works__tag"><?php echo esc_html($works_category->name); ?></p>
-										<?php
-											endforeach;
-										endif; ?>
+                		<?php get_template_part('/template-parts/tag'); ?>
 									</div>
 								</a>
 							</li>
@@ -296,7 +284,7 @@
 						</div>
 					</div>
 					<div class="section__more">
-							<a href="<?php echo esc_url(get_permalink(get_option('page_for_posts'))); ?>" type="button" class="more__button">実績一覧を見る</a>
+							<a href="<?php echo esc_url(get_permalink(get_option('page_for_posts'))); ?>" type="button" class="more__button">実績一覧ページを見る</a>
 					</div>
 				</div>
 			</section>
@@ -327,26 +315,13 @@
 						<li class="blog__contents">
 							<a href="<?php echo the_permalink()?>" class="blog__link" aria-label="">
 								<figure class="blog__figure">
-								<?php if (has_post_thumbnail()): ?>
-									<?php the_post_thumbnail(); ?>
-								<?php else: ?>
-									<img src="<?php echo get_template_directory_uri(); ?>/assets/img/noimg.png" alt="アイキャッチ画像がありません">
-								<?php endif; ?>
+              		<?php get_template_part('/template-parts/thumbnail'); ?>
 								</figure>
 								<div class="blog__info">
 									<time class="blog__date" datetime="<?php echo get_the_date('Y.m.d'); ?>"><?php echo get_the_date('Y.m.d'); ?></time>
 									<h3 class="blog__ttl"><?php echo the_title() ?></h3>
 									<div class="blog__tags">
-									<?php
-										$blog_categories = get_the_terms(get_the_ID(), 'blog_cat');
-											if($blog_categories):
-												foreach ($blog_categories as $blog_category):
-										?>
-										<p class="works__tag blog__tag"><?php echo esc_html($blog_category->name); ?></p>
-										<?php
-											endforeach;
-										endif;
-										?>
+                	<?php get_template_part('/template-parts/tag'); ?>
 									</div>
 								</div>
 							</a>
@@ -358,7 +333,7 @@
 					?>
 					</ul>
 					<div class="section__more">
-						<a href="<?php echo esc_url(home_url('blog')) ?>" type="button" class="more__button">ブログ一覧を見る</a>
+						<a href="<?php echo esc_url(home_url('blog')) ?>" type="button" class="more__button">ブログ一覧ページを見る</a>
 					</div>
 				</div>
 			</section>

@@ -20,23 +20,11 @@
 							<li class="works-desc__contents">
 								<a href="<?php the_permalink(); ?>" class="works__link" aria-label="<?php the_title(); ?>を見る">
 									<figure class="works-desc__figure">
-									<?php if (has_post_thumbnail()): ?>
-											<?php the_post_thumbnail(); ?>
-									<?php else: ?>
-											<img src="<?php echo get_template_directory_uri(); ?>/assets/img/noimg.png" alt="アイキャッチ画像がありません">
-									<?php endif; ?>
+              			<?php get_template_part('/template-parts/thumbnail'); ?>
 									</figure>
 									<div class="works-desc__info">
 										<h3 class="works-desc__ttl"><?php the_title(); ?><br class="is-sp"><?php the_content(); ?></h3>
-										<?php
-										$works_categories = get_the_terms(get_the_ID(), 'category');
-											if($works_categories):
-												foreach ($works_categories as $works_category):
-										?>
-											<p class="works__tag works-desc__tag"><?php echo esc_html($works_category->name); ?></p>
-										<?php
-											endforeach;
-										endif; ?>
+                		<?php get_template_part('/template-parts/tag'); ?>
 									</div>
 								</a>
 							</li>
@@ -46,9 +34,6 @@
 						wp_reset_postdata();
 						?>
 					</ul>
-					<!-- <div class="section__more">
-						<a href="" type="button" class="more__button">ブログ一覧を見る</a>
-					</div> -->
 				</div>
 			</section>
 			<!-- /#blog -->

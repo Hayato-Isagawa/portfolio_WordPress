@@ -117,7 +117,7 @@
     <dt class="works-desc__label">URL</dt>
     <dd class="works-desc__desc">
       <a href="<?php echo the_field('url'); ?>" target="_blank">
-        <p class="works-desc__text works-desc__text--link">
+        <p class="works-desc__text link__hover">
           <?php the_field('url'); ?>
             <i class="fa-solid fa-arrow-up-right-from-square"></i>
         </p>

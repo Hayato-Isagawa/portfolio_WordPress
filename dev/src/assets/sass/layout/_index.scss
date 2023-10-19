@@ -2,5 +2,9 @@
 @use 'description';
 @use 'column';
 @use 'news';
+@use 'archive-news';
 @use 'blog';
+@use 'archive-blog';
+@use 'pagination';
+@use 'article-pagination';
 @use 'works-desc';

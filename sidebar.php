@@ -1,5 +1,5 @@
 <!-- side -->
-  <aside class="l-2column-side">
+  <aside class="column__side">
 
     <?php
     if (is_active_sidebar('sidebar')):

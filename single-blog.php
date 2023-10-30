@@ -15,7 +15,7 @@
       <article class="blog-article">
         <h1 class="blog-article__ttl"><?php the_title(); ?></h1>
         <div class="blog-article__meta">
-          <time class="blog-article__date" datetime="<?php the_time('c') ;?>"><?php the_time('Y.m.d'); ?></time>
+          <time class="blog-article__date" datetime="<?php the_time('c') ;?>"><i class="fa-solid fa-pen" style="color: #d2d2d2;"></i> <?php the_time('Y.m.d'); ?></time>
           <?php get_template_part('/template-parts/tag'); ?>
         </div>
         <div class="blog-article__body">
@@ -30,7 +30,7 @@
     </main>
   <!-- /.column__main -->
 
-  <?php get_sidebar(); ?>
+  <?php get_sidebar('direct'); ?>
   <!-- /.column__side -->
 
   </div>

@@ -41,6 +41,7 @@
 .column__side {
   flex: 310px 0 1;
   box-shadow: 0 0 10px global.$color-main;
+  padding: 10px;
 
   @include global.mq("small") {
     width: 100%;

@@ -22,4 +22,56 @@
   }
   add_action("wp_enqueue_scripts", "my_script_init");
 
-  
+  // function my_widget_init() {
+  //   register_sidebar(
+  //     array(
+  //       'name'          => 'サイドバー',
+  //       'id'            => 'sidebar',
+  //       'before_widget' => '<div id="%1$s" class="widget %2$s">',
+  //       'after_widget'  => '</div>',
+  //       'before_title'  => '<div class="widget-title">',
+  //       'after_title'   => '</div>'
+  //     ),
+  //   );
+  // }
+
+  // add_action('widgets_init', 'my_widget_init');
+
+  function my_side_category() {
+    $post_type = get_post_type();
+    if ($post_type === 'post') {
+      $categories = get_the_category(
+        array(
+          // 'category'      =>'category',
+          'orderby'       => 'count',
+          'order'         => 'DESC',
+          'hide-empty'    => 1,
+        )
+      );
+    } elseif ($post_type === 'blog') {
+      $categories = get_terms(
+        array(
+        'taxonomy'      => 'blog_cat',
+        'orderby'       => 'count',
+        'order'         => 'DESC',
+        'hide-empty'    => 1,
+      ));
+    } else {
+      $categories = get_terms(
+        array(
+        'taxonomy'      => 'news_cat',
+        'orderby'       => 'count',
+        'order'         => 'DESC',
+        'hide-empty'    => 1,
+      ));
+    }
+
+    if ($categories):
+      foreach ($categories as $category):
+        $category_link = get_category_link($category->term_id);
+        echo '<a class="side-category__link" href="' . esc_url($category_link) . '">
+                <h5 class="side-category__name link__hover">' . esc_html($category->name) . '</h5>
+              </a>';
+      endforeach;
+    endif;
+  }
